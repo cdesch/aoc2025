@@ -17,17 +17,15 @@ fn test_day09_part2_sample() {
 }
 
 #[test]
-#[ignore] // remove once you have the real answer
 fn test_day09_part1_real() {
     let input = read_input(9);
     let result = Day09.part1(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected real answer
+    assert_eq!(result, "4749838800");
 }
 
 #[test]
-#[ignore] // remove once you have the real answer
 fn test_day09_part2_real() {
     let input = read_input(9);
     let result = Day09.part2(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected real answer
+    assert_eq!(result, "1624057680");
 }
