@@ -4,6 +4,7 @@
 pub mod day01;
 pub mod day02;
 pub mod day09;
+pub mod day10;
 
 /// Trait that every day's solution implements.
 pub trait Solution {
@@ -20,6 +21,7 @@ pub fn run_day(day: u32) {
         1 => run_solution(1, &day01::Day01, &input),
         2 => run_solution(2, &day02::Day02, &input),
         9 => run_solution(9, &day09::Day09, &input),
+        10 => run_solution(10, &day10::Day10, &input),
         // MATCH_ARMS
         _ => eprintln!("Day {:02} is not implemented yet.", day),
     }
