@@ -13,7 +13,7 @@ fn test_day01_part1_sample() {
 fn test_day01_part2_sample() {
     let input = read_sample_input(1);
     let result = Day01.part2(&input);
-    assert_eq!(result, "not implemented"); // Part 2 not yet available
+    assert_eq!(result, "6");
 }
 
 #[test]
@@ -24,9 +24,7 @@ fn test_day01_part1_real() {
 }
 
 #[test]
-#[ignore] // remove once you have the real answer
 fn test_day01_part2_real() {
     let input = read_input(1);
     let result = Day01.part2(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected real answer
-}
+    assert_eq!(result, "6027");
