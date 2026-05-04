@@ -10,11 +10,10 @@ fn test_day09_part1_sample() {
 }
 
 #[test]
-#[ignore] // Part 2 not yet revealed
 fn test_day09_part2_sample() {
     let input = read_sample_input(9);
     let result = Day09.part2(&input);
-    assert_eq!(result, "expected");
+    assert_eq!(result, "24");
 }
 
 #[test]

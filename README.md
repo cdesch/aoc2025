@@ -9,7 +9,6 @@ My original solutions were lost due to a hard drive crash.
 
 Advent of Code 2025 solutions in Rust. See [rs_aoc/README.md](rs_aoc/README.md) for details.
 
-- [Elixir](ex_aoc/README.md)
 
 Create a new day
 
@@ -17,6 +16,13 @@ Create a new day
 ./rs_aoc/new_day.sh 1
 ```
 
+## Elixir Solutions
+
+- [Elixir](ex_aoc/README.md)
+
+```shell
+./ex_aoc/new_day.sh 1
+```
 
 ## Find out more
 
