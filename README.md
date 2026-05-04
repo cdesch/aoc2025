@@ -9,6 +9,8 @@ My original solutions were lost due to a hard drive crash.
 
 Advent of Code 2025 solutions in Rust. See [rs_aoc/README.md](rs_aoc/README.md) for details.
 
+- [Elixir](ex_aoc/README.md)
+
 Create a new day
 
 ```shell
