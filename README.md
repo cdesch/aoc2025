@@ -18,10 +18,19 @@ Create a new day
 
 ## Elixir Solutions
 
-- [Elixir](ex_aoc/README.md)
+Advent of Code 2025 solutions in Elixir. [Elixir](ex_aoc/README.md)
 
 ```shell
 ./ex_aoc/new_day.sh 1
+```
+
+## Testing
+
+Make the test script executable
+
+```shell
+chmod +x run_tests.sh
+./run_tests.sh
 ```
 
 ## Find out more
