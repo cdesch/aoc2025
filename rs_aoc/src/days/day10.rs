@@ -381,7 +381,7 @@ fn bb_direct(
     let b_sub: Vec<f64> = remaining.iter().map(|&v| v as f64).collect();
 
     if let Some(lp_val) = solve_lp(&a_sub, &b_sub, m, nf) {
-        let lb = current_sum + (lp_val - 1e-6).ceil() as i64;
+        let lb = current_sum + lp_val.floor() as i64;
         if lb >= *best {
             return;
         }
