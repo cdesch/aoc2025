@@ -20,13 +20,12 @@ fn test_day02_part2_sample() {
 fn test_day02_part1_real() {
     let input = read_input(2);
     let result = Day02.part1(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected real answer
+    assert_eq!(result, "8576933996");
 }
 
 #[test]
-#[ignore] // remove once you have the real answer
 fn test_day02_part2_real() {
     let input = read_input(2);
     let result = Day02.part2(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected real answer
+    assert_eq!(result, "25663320831");
 }
