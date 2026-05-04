@@ -4,10 +4,18 @@ Advent of Code 2025 solutions in Elixir and Rust. My original solution that I ha
 
 These solutions are here to 'recover' the lost progress I made when originally working on AOC and for the most part are solved using Kiro and Claude Opus 4.6. The solutions I solved (or will solve) on my own will be labeled as such. Everything solved by Claude using Kiro is labeled within the git commit history. 
 
+
+## Setup
+
+Clone the git repo
+
+```shell
+git clone git@github.com:cdesch/aoc2025.git
+```
+
 ## Rust Solutions
 
 Advent of Code 2025 solutions in Rust. See [rs_aoc/README.md](rs_aoc/README.md) for details.
-
 
 Create a new day
 
