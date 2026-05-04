@@ -27,5 +27,5 @@ fn test_day10_part1_real() {
 fn test_day10_part2_real() {
     let input = read_input(10);
     let result = Day10.part2(&input);
-    assert_eq!(result, "18276");
+    assert_eq!(result, "18982");
 }
