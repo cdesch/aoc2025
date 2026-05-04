@@ -13,7 +13,7 @@ fn test_day10_part1_sample() {
 fn test_day10_part2_sample() {
     let input = read_sample_input(10);
     let result = Day10.part2(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected sample answer
+    assert_eq!(result, "33");
 }
 
 #[test]
@@ -24,9 +24,8 @@ fn test_day10_part1_real() {
 }
 
 #[test]
-#[ignore] // remove once you have the real answer
 fn test_day10_part2_real() {
     let input = read_input(10);
     let result = Day10.part2(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected real answer
+    assert_eq!(result, "18276");
 }
