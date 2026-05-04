@@ -23,7 +23,7 @@ defmodule ExAoc.Day07Test do
     @tag :real
     test "real input" do
       input = ExAoc.read_input(7)
-      assert ExAoc.Day07.part2(input) == "expected"
+      assert ExAoc.Day07.part2(input) == 29893386035180
     end
   end
 end
