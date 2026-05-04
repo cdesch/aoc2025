@@ -6,14 +6,15 @@ use rs_aoc::{read_input, read_sample_input};
 fn test_day09_part1_sample() {
     let input = read_sample_input(9);
     let result = Day09.part1(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected sample answer
+    assert_eq!(result, "50");
 }
 
 #[test]
+#[ignore] // Part 2 not yet revealed
 fn test_day09_part2_sample() {
     let input = read_sample_input(9);
     let result = Day09.part2(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected sample answer
+    assert_eq!(result, "expected");
 }
 
 #[test]
