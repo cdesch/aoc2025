@@ -1,21 +1,8 @@
+use std::collections::HashSet;
+
 use crate::days::Solution;
 
 pub struct Day02;
-
-/// Check if a number is "invalid": its decimal representation is some
-/// sequence of digits repeated exactly twice (e.g. 55, 6464, 123123).
-/// The number must have an even number of digits and the first half
-/// must equal the second half. No leading zeroes allowed (handled
-/// naturally since we work with actual numbers).
-fn is_double(n: u128) -> bool {
-    let s = n.to_string();
-    let len = s.len();
-    if len % 2 != 0 {
-        return false;
-    }
-    let half = len / 2;
-    s[..half] == s[half..]
-}
 
 /// Parse the input into a list of (start, end) ranges.
 fn parse_ranges(input: &str) -> Vec<(u128, u128)> {
@@ -32,14 +19,35 @@ fn parse_ranges(input: &str) -> Vec<(u128, u128)> {
         .collect()
 }
 
-/// Generate all "double" numbers with exactly `2 * half_len` digits.
-/// A double number is formed by taking a `half_len`-digit number and
-/// concatenating it with itself. E.g. half_len=2 gives 1010, 1111, ..., 9999.
+/// Generate all "double" numbers: a k-digit base repeated exactly 2 times.
 fn doubles_with_half_len(half_len: u32) -> impl Iterator<Item = u128> {
-    let lo = if half_len == 1 { 1 } else { 10u128.pow(half_len - 1) };
-    let hi = 10u128.pow(half_len); // exclusive
-    let multiplier = hi; // 10^half_len
+    let lo = if half_len == 1 {
+        1
+    } else {
+        10u128.pow(half_len - 1)
+    };
+    let hi = 10u128.pow(half_len);
+    let multiplier = hi;
     (lo..hi).map(move |n| n * multiplier + n)
+}
+
+/// Generate all numbers formed by repeating a k-digit base exactly `reps` times.
+fn repeats_with_base_len(base_len: u32, reps: u32) -> impl Iterator<Item = u128> {
+    let lo = if base_len == 1 {
+        1
+    } else {
+        10u128.pow(base_len - 1)
+    };
+    let hi = 10u128.pow(base_len);
+    let bl = base_len;
+    let r = reps;
+    (lo..hi).map(move |n| {
+        let mut result = 0u128;
+        for i in 0..r {
+            result += n * 10u128.pow(bl * i);
+        }
+        result
+    })
 }
 
 /// Find the maximum number of digits across all range endpoints.
@@ -51,23 +59,23 @@ fn max_digits(ranges: &[(u128, u128)]) -> u32 {
         .unwrap_or(0)
 }
 
+/// Check if a number falls within any of the given ranges.
+fn in_any_range(n: u128, ranges: &[(u128, u128)]) -> bool {
+    ranges.iter().any(|&(start, end)| n >= start && n <= end)
+}
+
 impl Solution for Day02 {
     fn part1(&self, input: &str) -> String {
         let ranges = parse_ranges(input);
         let max_d = max_digits(&ranges);
-        // We only need to consider doubles with even digit counts up to max_d
-        // half_len goes from 1 to max_d/2 (rounded up to be safe)
         let max_half = (max_d + 1) / 2;
 
         let mut total: u128 = 0;
 
         for half_len in 1..=max_half {
             for double in doubles_with_half_len(half_len) {
-                for &(start, end) in &ranges {
-                    if double >= start && double <= end {
-                        total += double;
-                        break; // each double counted once even if in multiple ranges
-                    }
+                if in_any_range(double, &ranges) {
+                    total += double;
                 }
             }
         }
@@ -75,8 +83,31 @@ impl Solution for Day02 {
         total.to_string()
     }
 
-    fn part2(&self, _input: &str) -> String {
-        // TODO: Implement part 2
-        String::from("not implemented")
+    fn part2(&self, input: &str) -> String {
+        let ranges = parse_ranges(input);
+        let max_d = max_digits(&ranges);
+
+        // Collect all invalid IDs (deduplicated) that fall in any range.
+        // For each base length k and repetition count r >= 2 where k*r <= max_d,
+        // generate all k-digit numbers repeated r times.
+        let mut invalid_ids: HashSet<u128> = HashSet::new();
+
+        for base_len in 1..=max_d {
+            // reps must be >= 2, and base_len * reps <= max_d
+            if base_len * 2 > max_d {
+                break;
+            }
+            let max_reps = max_d / base_len;
+            for reps in 2..=max_reps {
+                for val in repeats_with_base_len(base_len, reps) {
+                    if in_any_range(val, &ranges) {
+                        invalid_ids.insert(val);
+                    }
+                }
+            }
+        }
+
+        let total: u128 = invalid_ids.iter().sum();
+        total.to_string()
     }
 }

@@ -13,7 +13,7 @@ fn test_day02_part1_sample() {
 fn test_day02_part2_sample() {
     let input = read_sample_input(2);
     let result = Day02.part2(&input);
-    assert_eq!(result, "expected"); // TODO: replace with expected sample answer
+    assert_eq!(result, "4174379265");
 }
 
 #[test]
