@@ -2,6 +2,7 @@
 // The new_day.sh script will append `pub mod dayXX;` lines below.
 
 pub mod day01;
+pub mod day02;
 
 /// Trait that every day's solution implements.
 pub trait Solution {
@@ -16,6 +17,7 @@ pub fn run_day(day: u32) {
     match day {
         // The new_day.sh script will insert match arms here.
         1 => run_solution(1, &day01::Day01, &input),
+        2 => run_solution(2, &day02::Day02, &input),
         // MATCH_ARMS
         _ => eprintln!("Day {:02} is not implemented yet.", day),
     }

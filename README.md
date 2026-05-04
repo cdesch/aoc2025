@@ -9,6 +9,12 @@ My original solutions were lost due to a hard drive crash.
 
 Advent of Code 2025 solutions in Rust. See [rs_aoc/README.md](rs_aoc/README.md) for details.
 
+Create a new day
+
+```shell
+./rs_aoc/new_day.sh 1
+```
+
 
 ## Find out more
 
