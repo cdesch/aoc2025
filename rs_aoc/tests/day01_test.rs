@@ -28,3 +28,4 @@ fn test_day01_part2_real() {
     let input = read_input(1);
     let result = Day01.part2(&input);
     assert_eq!(result, "6027");
+}
